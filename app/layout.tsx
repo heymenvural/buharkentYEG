@@ -147,7 +147,7 @@ function Footer() {
           </div>
         </div>
         <div style={{ borderTop:"1px solid rgba(255,255,255,.1)", paddingTop:20, textAlign:"center", fontSize:12 }}>
-          © 2025 BUHARYEG Derneği. IPARD III – LEADER Programı kapsamında faaliyet göstermektedir.
+          © 2026 BUHARYEG Derneği. IPARD III – LEADER Programı kapsamında faaliyet göstermektedir.
         </div>
       </div>
     </footer>

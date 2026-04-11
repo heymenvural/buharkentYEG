@@ -71,7 +71,7 @@ export default function IlanlarPage() {
     const body = encodeURIComponent(
 `BUHARYEG OFİS EKİPMANI SATIN ALIM TEKLİFİ
 Kategori: ${kat}
-İlan No: BUHARYEG-2025-001 | Açılış: 13 Nisan 2025
+İlan No: BUHARYEG-2026-001 | Açılış: 13 Nisan 2026
 ==========================================
 
 FİRMA BİLGİLERİ
@@ -114,7 +114,7 @@ KURALLAR:
         <div style={{ position:"absolute", inset:0, opacity:.05, backgroundImage:"radial-gradient(circle at 2px 2px,white 1px,transparent 0)", backgroundSize:"32px 32px" }} />
         <div style={{ maxWidth:1100, margin:"0 auto", position:"relative" }}>
           <div style={{ display:"inline-block", background:"rgba(90,158,26,.25)", border:"1px solid rgba(90,158,26,.5)", borderRadius:20, padding:"5px 16px", fontSize:11, color:"#86efac", letterSpacing:2, textTransform:"uppercase", marginBottom:20, fontWeight:600, animation:"fadeIn .8s ease both" }}>
-            📢 Aktif İlan — No: BUHARYEG-2025-001
+            📢 Aktif İlan — No: BUHARYEG-2026-001
           </div>
           <h1 style={{ fontSize:"clamp(24px,4vw,46px)", fontWeight:900, color:"white", marginBottom:16, animation:"fadeUp .8s ease .1s both" }}>
             Ofis Ekipmanı Satın Alım İlanı
@@ -123,7 +123,7 @@ KURALLAR:
             IPARD III – LEADER Programı kapsamında dernek ofisimiz için ekipman temini yapılacaktır.
           </p>
           <div style={{ display:"flex", flexWrap:"wrap", gap:16, animation:"fadeUp .8s ease .3s both" }}>
-            {[{ l:"İlan Açılışı", d:"13 Nisan 2025" },{ l:"Son Başvuru", d:"28 Nisan 2025" },{ l:"İlan No", d:"BUHARYEG-2025-001" },{ l:"Program", d:"IPARD III LEADER" }].map((b,i)=>(
+            {[{ l:"İlan Açılışı", d:"13 Nisan 2026" },{ l:"Son Başvuru", d:"20 Nisan 2026" },{ l:"İlan No", d:"BUHARYEG-2026-001" },{ l:"Program", d:"IPARD III LEADER" }].map((b,i)=>(
               <div key={i} style={{ background:"rgba(255,255,255,.08)", border:"1px solid rgba(255,255,255,.15)", borderRadius:10, padding:"10px 18px" }}>
                 <div style={{ fontSize:10, color:"rgba(255,255,255,.55)", marginBottom:3, textTransform:"uppercase", letterSpacing:1 }}>{b.l}</div>
                 <div style={{ color:"white", fontWeight:700, fontSize:14 }}>{b.d}</div>
@@ -139,7 +139,7 @@ KURALLAR:
         <div className="reveal" style={{ background:"#fffbeb", border:"1px solid #fbbf24", borderLeft:"5px solid #f59e0b", borderRadius:10, padding:"20px 24px", marginBottom:40 }}>
           <div style={{ fontWeight:700, color:"#92400e", marginBottom:12, fontSize:15 }}>⚠️ TKDK Teklif Alma Kuralları</div>
           <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit,minmax(240px,1fr))", gap:10 }}>
-            {["Teklifler KDV hariç TL olarak verilmelidir.","Her kalemin birim fiyatı ayrı belirtilmelidir.","Referans tavan fiyatı hiçbir şekilde aşılamaz.","Malların menşei AB, AB aday veya IPA ülkelerinden biri olmalıdır.","Teklif DDP (Yerinde Teslim) esasına göre hazırlanmalıdır.","Teklif geçerlilik süresi en az 90 gün olmalıdır."].map((k,i)=>(
+            {["Teklifler KDV hariç TL olarak verilmelidir.","Her kalemin birim fiyatı ayrı belirtilmelidir.","Referans tavan fiyatı hiçbir şekilde aşılamaz.","Malların menşei AB, AB aday veya IPA ülkelerinden biri olmalıdır.","Teklif DDP (Yerinde Teslim) esasına göre hazırlanmalıdır. Nakliye, paketleme, sigorta ve kurulum giderleri fiyata dahil edilmemeli, ayrıca belirtilmelidir.","Teklif geçerlilik süresi en az 90 gün olmalıdır."].map((k,i)=>(
               <div key={i} style={{ display:"flex", gap:8, fontSize:13, color:"#78350f" }}>
                 <span style={{ color:"#f59e0b", flexShrink:0 }}>•</span><span>{k}</span>
               </div>

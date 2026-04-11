@@ -175,7 +175,7 @@ function IlanCagri() {
           <h2 style={{ fontSize:"clamp(22px,4vw,36px)", fontWeight:800, color:"#1B3F7A", marginBottom:20 }}>Ofis Ekipmanı Satın Alım İlanı</h2>
           <p style={{ fontSize:16, color:"#555", lineHeight:1.8, marginBottom:32 }}>
             IPARD III – LEADER Programı kapsamında dernek ofisimiz için teknolojik cihazlar ve ofis mobilyaları temin edilecektir.<br />
-            <strong>İlan açılışı: 13 Nisan 2025</strong>
+            <strong>İlan açılışı: 13 Nisan 2026</strong>
           </p>
           <a href="/ilanlar" className="btn-green" style={{ fontSize:16, padding:"16px 40px" }}>İlanları Görüntüle →</a>
         </div>
