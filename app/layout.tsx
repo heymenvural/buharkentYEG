@@ -20,97 +20,102 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
 function Navbar() {
   return (
-    <nav style={{
-      position: "fixed",
-      top: 0,
-      left: 0,
-      right: 0,
-      zIndex: 1000,
-      background: "rgba(18, 45, 92, 0.95)",
-      backdropFilter: "blur(12px)",
-      WebkitBackdropFilter: "blur(12px)",
-      borderBottom: "1px solid rgba(90,158,26,0.3)",
-      padding: "0 24px",
-      height: 68,
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "space-between",
-    }}>
-      <a href="/" style={{ display: "flex", alignItems: "center", gap: 12, textDecoration: "none" }}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/logo.png" alt="BUHARYEG Logo" style={{ height: 42, width: "auto", objectFit: "contain" }} />
-      </a>
-      <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+    <>
+      <nav style={{
+        position:"fixed", top:0, left:0, right:0, zIndex:1000,
+        background:"rgba(18,45,92,0.96)", backdropFilter:"blur(12px)",
+        WebkitBackdropFilter:"blur(12px)",
+        borderBottom:"1px solid rgba(90,158,26,0.3)",
+        padding:"0 24px", height:68,
+        display:"flex", alignItems:"center", justifyContent:"space-between",
+      }}>
+        <a href="/" style={{ display:"flex", alignItems:"center", gap:12, textDecoration:"none" }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/logo.png" alt="BUHARYEG" style={{ height:42, width:"auto", objectFit:"contain" }} />
+        </a>
+
+        {/* Desktop menü */}
+        <div className="nav-desktop" style={{ display:"flex", gap:4, alignItems:"center" }}>
+          {[
+            { href:"/", label:"Ana Sayfa" },
+            { href:"/#hakkimizda", label:"Hakkımızda" },
+            { href:"/#faaliyetler", label:"Faaliyetler" },
+            { href:"/#iletisim", label:"İletişim" },
+          ].map(item => (
+            <a key={item.href} href={item.href} className="nav-link">{item.label}</a>
+          ))}
+          <a href="/ilanlar" className="nav-link nav-link-active" style={{ marginLeft:8 }}>📢 İlanlar</a>
+        </div>
+
+        {/* Mobil hamburger */}
+        <label className="nav-mobile-btn" htmlFor="nav-toggle" style={{
+          cursor:"pointer", flexDirection:"column", gap:5,
+          padding:8, display:"none",
+        }}>
+          <span style={{ display:"block", width:24, height:2, background:"white", borderRadius:2 }} />
+          <span style={{ display:"block", width:24, height:2, background:"white", borderRadius:2 }} />
+          <span style={{ display:"block", width:24, height:2, background:"white", borderRadius:2 }} />
+        </label>
+      </nav>
+
+      {/* Mobil menü (CSS toggle trick) */}
+      <input type="checkbox" id="nav-toggle" style={{ display:"none" }} />
+      <div className="mobile-menu" style={{
+        position:"fixed", top:68, left:0, right:0, zIndex:999,
+        background:"rgba(14,37,82,0.98)", backdropFilter:"blur(12px)",
+        padding:"16px 24px", display:"flex", flexDirection:"column", gap:4,
+        borderBottom:"1px solid rgba(90,158,26,0.3)",
+      }}>
         {[
-          { href: "/", label: "Ana Sayfa" },
-          { href: "/#hakkimizda", label: "Hakkımızda" },
-          { href: "/#faaliyetler", label: "Faaliyetler" },
-          { href: "/ilanlar", label: "İlanlar", vurgulu: true },
-          { href: "/#iletisim", label: "İletişim" },
-        ].map((item) => (
-          <a
-            key={item.href}
-            href={item.href}
-            style={{
-              color: item.vurgulu ? "#5A9E1A" : "rgba(255,255,255,0.85)",
-              textDecoration: "none",
-              fontSize: 14,
-              fontWeight: item.vurgulu ? 700 : 500,
-              padding: "8px 14px",
-              borderRadius: 6,
-              border: item.vurgulu ? "1px solid #5A9E1A" : "1px solid transparent",
-              transition: "all 0.2s",
-            }}
-          >
-            {item.label}
-          </a>
+          { href:"/", label:"Ana Sayfa" },
+          { href:"/#hakkimizda", label:"Hakkımızda" },
+          { href:"/#faaliyetler", label:"Faaliyetler" },
+          { href:"/#iletisim", label:"İletişim" },
+          { href:"/ilanlar", label:"📢 İlanlar" },
+        ].map(item => (
+          <a key={item.href} href={item.href} style={{
+            color:"rgba(255,255,255,.85)", textDecoration:"none", fontSize:16,
+            fontWeight:500, padding:"12px 0", borderBottom:"1px solid rgba(255,255,255,.08)",
+          }}>{item.label}</a>
         ))}
       </div>
-    </nav>
+
+      <style>{`
+        #nav-toggle:checked ~ .mobile-menu { display:flex !important; }
+      `}</style>
+    </>
   );
 }
 
 function Footer() {
   return (
-    <footer style={{
-      background: "#0e2552",
-      color: "rgba(255,255,255,0.7)",
-      padding: "48px 24px 32px",
-      marginTop: 0,
-    }}>
-      <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 40, marginBottom: 40 }}>
+    <footer style={{ background:"#0e2552", color:"rgba(255,255,255,.7)", padding:"48px 24px 32px" }}>
+      <div style={{ maxWidth:1100, margin:"0 auto" }}>
+        <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit, minmax(200px, 1fr))", gap:40, marginBottom:40 }}>
           <div>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/logo.png" alt="BUHARYEG" style={{ height: 48, marginBottom: 16, filter: "brightness(0) invert(1)" }} />
-            <p style={{ fontSize: 13, lineHeight: 1.7 }}>
-              Buharkent Yerel Eylem Grubu Derneği<br />
-              IPARD III – LEADER Programı
-            </p>
+            <img src="/logo.png" alt="BUHARYEG" style={{ height:44, marginBottom:16, filter:"brightness(0) invert(1)" }} />
+            <p style={{ fontSize:13, lineHeight:1.7 }}>Buharkent Yerel Eylem Grubu Derneği<br />IPARD III – LEADER Programı</p>
           </div>
           <div>
-            <div style={{ color: "white", fontWeight: 700, marginBottom: 16, fontSize: 15 }}>Hızlı Linkler</div>
-            {[
-              { href: "/", label: "Ana Sayfa" },
-              { href: "/#hakkimizda", label: "Hakkımızda" },
-              { href: "/ilanlar", label: "Satın Alım İlanları" },
-              { href: "/#iletisim", label: "İletişim" },
-            ].map(l => (
-              <div key={l.href} style={{ marginBottom: 8 }}>
-                <a href={l.href} style={{ color: "rgba(255,255,255,0.65)", textDecoration: "none", fontSize: 13 }}>{l.label}</a>
+            <div style={{ color:"white", fontWeight:700, marginBottom:16, fontSize:15 }}>Hızlı Linkler</div>
+            {[{ href:"/", label:"Ana Sayfa" }, { href:"/#hakkimizda", label:"Hakkımızda" }, { href:"/ilanlar", label:"Satın Alım İlanları" }, { href:"/#iletisim", label:"İletişim" }].map(l => (
+              <div key={l.href} style={{ marginBottom:8 }}>
+                <a href={l.href} style={{ color:"rgba(255,255,255,.65)", textDecoration:"none", fontSize:13 }}>{l.label}</a>
               </div>
             ))}
           </div>
           <div>
-            <div style={{ color: "white", fontWeight: 700, marginBottom: 16, fontSize: 15 }}>İletişim</div>
-            <p style={{ fontSize: 13, lineHeight: 2 }}>
-              📧 buharkentyeg@gmail.com<br />
-              📍 Buharkent, Aydın<br />
-              🌐 www.buharyeg.org
+            <div style={{ color:"white", fontWeight:700, marginBottom:16, fontSize:15 }}>İletişim</div>
+            <p style={{ fontSize:13, lineHeight:2.2 }}>
+              👤 Harun Eymen Vural<br />
+              📞 <a href="tel:+905544411167" style={{ color:"rgba(255,255,255,.65)", textDecoration:"none" }}>+90 554 441 11 67</a><br />
+              📧 <a href="mailto:buharkentyeg@gmail.com" style={{ color:"rgba(255,255,255,.65)", textDecoration:"none" }}>buharkentyeg@gmail.com</a><br />
+              📍 Buharkent, Aydın
             </p>
           </div>
         </div>
-        <div style={{ borderTop: "1px solid rgba(255,255,255,0.1)", paddingTop: 20, textAlign: "center", fontSize: 12 }}>
+        <div style={{ borderTop:"1px solid rgba(255,255,255,.1)", paddingTop:20, textAlign:"center", fontSize:12 }}>
           © 2025 BUHARYEG Derneği. IPARD III – LEADER Programı kapsamında faaliyet göstermektedir.
         </div>
       </div>
