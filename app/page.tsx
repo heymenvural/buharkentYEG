@@ -380,10 +380,13 @@ function IletisimSection() {
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 24 }}>
           {[
-            { ikon: "📧", baslik: "E-posta", deger: "buharkentyeg@gmail.com", link: "mailto:buharkentyeg@gmail.com" },
-            { ikon: "🌐", baslik: "Web Sitesi", deger: "www.buharyeg.org", link: "https://www.buharyeg.org" },
-            { ikon: "📍", baslik: "Adres", deger: "Buharkent, Aydın", link: null },
-          ].map((k, i) => (
+              { ikon: "👤", baslik: "Müdür", deger: "Harun Eymen Vural", link: null },
+              { ikon: "📞", baslik: "Telefon", deger: "+90 554 441 11 67", link: "tel:+905544411167" },
+              { ikon: "📧", baslik: "E-posta", deger: "haruneymenvurall@gmail.com", link: "mailto:haruneymenvurall@gmail.com" },
+              { ikon: "📧", baslik: "Dernek E-posta", deger: "buharkentyeg@gmail.com", link: "mailto:buharkentyeg@gmail.com" },
+              { ikon: "🌐", baslik: "Web Sitesi", deger: "www.buharyeg.org", link: "https://www.buharyeg.org" },
+              { ikon: "📍", baslik: "Adres", deger: "Buharkent, Aydın", link: null },
+                ].map((k, i) => (
             <div key={i} className="card-hover reveal" style={{
               background: "white",
               borderRadius: 14,
