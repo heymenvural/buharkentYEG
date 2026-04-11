@@ -47,25 +47,33 @@ function Navbar() {
           <a href="/ilanlar" className="nav-link nav-link-active" style={{ marginLeft:8 }}>📢 İlanlar</a>
         </div>
 
-        {/* Mobil hamburger */}
-        <label className="nav-mobile-btn" htmlFor="nav-toggle" style={{
-          cursor:"pointer", flexDirection:"column", gap:5,
-          padding:8, display:"none",
-        }}>
+        {/* Mobil hamburger butonu */}
+        <button
+          id="hamburger-btn"
+          className="nav-mobile-btn"
+          aria-label="Menü"
+          style={{
+            display:"none", flexDirection:"column", gap:5, padding:8,
+            background:"transparent", border:"none", cursor:"pointer",
+          }}
+        >
           <span style={{ display:"block", width:24, height:2, background:"white", borderRadius:2 }} />
           <span style={{ display:"block", width:24, height:2, background:"white", borderRadius:2 }} />
           <span style={{ display:"block", width:24, height:2, background:"white", borderRadius:2 }} />
-        </label>
+        </button>
       </nav>
 
-      {/* Mobil menü (CSS toggle trick) */}
-      <input type="checkbox" id="nav-toggle" style={{ display:"none" }} />
-      <div className="mobile-menu" style={{
-        position:"fixed", top:68, left:0, right:0, zIndex:999,
-        background:"rgba(14,37,82,0.98)", backdropFilter:"blur(12px)",
-        padding:"16px 24px", display:"flex", flexDirection:"column", gap:4,
-        borderBottom:"1px solid rgba(90,158,26,0.3)",
-      }}>
+      {/* Mobil menü - başlangıçta gizli */}
+      <div
+        id="mobile-menu"
+        style={{
+          position:"fixed", top:68, left:0, right:0, zIndex:999,
+          background:"rgba(14,37,82,0.98)", backdropFilter:"blur(12px)",
+          padding:"16px 24px", flexDirection:"column", gap:4,
+          borderBottom:"1px solid rgba(90,158,26,0.3)",
+          display:"none",
+        }}
+      >
         {[
           { href:"/", label:"Ana Sayfa" },
           { href:"/#hakkimizda", label:"Hakkımızda" },
@@ -73,16 +81,34 @@ function Navbar() {
           { href:"/#iletisim", label:"İletişim" },
           { href:"/ilanlar", label:"📢 İlanlar" },
         ].map(item => (
-          <a key={item.href} href={item.href} style={{
+          <a key={item.href} href={item.href} className="mobile-menu-link" style={{
             color:"rgba(255,255,255,.85)", textDecoration:"none", fontSize:16,
             fontWeight:500, padding:"12px 0", borderBottom:"1px solid rgba(255,255,255,.08)",
+            display:"block",
           }}>{item.label}</a>
         ))}
       </div>
 
-      <style>{`
-        #nav-toggle:checked ~ .mobile-menu { display:flex !important; }
-      `}</style>
+      <script dangerouslySetInnerHTML={{ __html: `
+        (function() {
+          var btn = document.getElementById('hamburger-btn');
+          var menu = document.getElementById('mobile-menu');
+          var open = false;
+          if (btn && menu) {
+            btn.addEventListener('click', function(e) {
+              e.stopPropagation();
+              open = !open;
+              menu.style.display = open ? 'flex' : 'none';
+            });
+            document.addEventListener('click', function() {
+              if (open) { open = false; menu.style.display = 'none'; }
+            });
+            menu.addEventListener('click', function() {
+              open = false; menu.style.display = 'none';
+            });
+          }
+        })();
+      ` }} />
     </>
   );
 }
@@ -99,7 +125,12 @@ function Footer() {
           </div>
           <div>
             <div style={{ color:"white", fontWeight:700, marginBottom:16, fontSize:15 }}>Hızlı Linkler</div>
-            {[{ href:"/", label:"Ana Sayfa" }, { href:"/#hakkimizda", label:"Hakkımızda" }, { href:"/ilanlar", label:"Satın Alım İlanları" }, { href:"/#iletisim", label:"İletişim" }].map(l => (
+            {[
+              { href:"/", label:"Ana Sayfa" },
+              { href:"/#hakkimizda", label:"Hakkımızda" },
+              { href:"/ilanlar", label:"Satın Alım İlanları" },
+              { href:"/#iletisim", label:"İletişim" },
+            ].map(l => (
               <div key={l.href} style={{ marginBottom:8 }}>
                 <a href={l.href} style={{ color:"rgba(255,255,255,.65)", textDecoration:"none", fontSize:13 }}>{l.label}</a>
               </div>
