@@ -40,6 +40,7 @@ function Navbar() {
             { href:"/", label:"Ana Sayfa" },
             { href:"/#hakkimizda", label:"Hakkımızda" },
             { href:"/#faaliyetler", label:"Faaliyetler" },
+            { href:"/ekipmanlar", label:"Alınan Ekipmanlar" },
             { href:"/ilanlar", label:"İlanlar" },
             { href:"/#iletisim", label:"İletişim" },
           ].map(item => (
@@ -80,6 +81,7 @@ function Navbar() {
           { href:"/#hakkimizda", label:"Hakkımızda" },
           { href:"/#faaliyetler", label:"Faaliyetler" },
           { href:"/#etkinlikler", label:"🎉 Etkinlikler" },
+          { href:"/ekipmanlar", label:"📦 Alınan Ekipmanlar" },
           { href:"/ilanlar", label:"İlanlar" },
           { href:"/#iletisim", label:"İletişim" },
         ].map(item => (
@@ -131,6 +133,7 @@ function Footer() {
               { href:"/", label:"Ana Sayfa" },
               { href:"/#hakkimizda", label:"Hakkımızda" },
               { href:"/#etkinlikler", label:"Etkinlikler" },
+              { href:"/ekipmanlar", label:"Alınan Ekipmanlar" },
               { href:"/ilanlar", label:"Satın Alım İlanları" },
               { href:"/#iletisim", label:"İletişim" },
             ].map(l => (
