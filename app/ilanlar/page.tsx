@@ -9,9 +9,6 @@ export const metadata: Metadata = {
 const SON_GUNCELLEME = "24 Eylül 2026";
 const MAIL = "buharkentyeg@gmail.com";
 
-const gecmisIlanlar = [
-  { no:"BUHARYEG-2026-001", baslik:"Ofis Ekipmanı Satın Alımı", tarih:"13–20 Nisan 2026" },
-];
 
 export default function IlanlarPage() {
   return (
@@ -46,20 +43,7 @@ export default function IlanlarPage() {
           </div>
         </div>
 
-        {gecmisIlanlar.length > 0 && (
-          <div style={{ marginTop:40 }}>
-            <div style={{ fontWeight:700, color:"#1B3F7A", fontSize:15, marginBottom:14 }}>Tamamlanan İlanlar</div>
-            {gecmisIlanlar.map(il => (
-              <div key={il.no} style={{ background:"white", border:"1px solid #e8e4db", borderRadius:10, padding:"14px 18px", display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap", gap:8, marginBottom:10 }}>
-                <div>
-                  <div style={{ fontWeight:600, fontSize:14, color:"#333" }}>{il.baslik}</div>
-                  <div style={{ fontSize:12, color:"#999" }}>{il.no} · {il.tarih}</div>
-                </div>
-                <span style={{ background:"#f0ece4", color:"#6b6358", borderRadius:20, padding:"4px 12px", fontSize:11, fontWeight:700 }}>Kapandı</span>
-              </div>
-            ))}
-          </div>
-        )}
+        
       </div>
     </main>
   );
