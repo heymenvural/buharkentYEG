@@ -40,11 +40,12 @@ function Navbar() {
             { href:"/", label:"Ana Sayfa" },
             { href:"/#hakkimizda", label:"Hakkımızda" },
             { href:"/#faaliyetler", label:"Faaliyetler" },
+            { href:"/ilanlar", label:"İlanlar" },
             { href:"/#iletisim", label:"İletişim" },
           ].map(item => (
             <a key={item.href} href={item.href} className="nav-link">{item.label}</a>
           ))}
-          <a href="/ilanlar" className="nav-link nav-link-active" style={{ marginLeft:8 }}>📢 İlanlar</a>
+          <a href="/#etkinlikler" className="nav-link nav-link-active" style={{ marginLeft:8 }}>🎉 Etkinlikler</a>
         </div>
 
         {/* Mobil hamburger butonu */}
@@ -78,8 +79,9 @@ function Navbar() {
           { href:"/", label:"Ana Sayfa" },
           { href:"/#hakkimizda", label:"Hakkımızda" },
           { href:"/#faaliyetler", label:"Faaliyetler" },
+          { href:"/#etkinlikler", label:"🎉 Etkinlikler" },
+          { href:"/ilanlar", label:"İlanlar" },
           { href:"/#iletisim", label:"İletişim" },
-          { href:"/ilanlar", label:"📢 İlanlar" },
         ].map(item => (
           <a key={item.href} href={item.href} className="mobile-menu-link" style={{
             color:"rgba(255,255,255,.85)", textDecoration:"none", fontSize:16,
@@ -128,6 +130,7 @@ function Footer() {
             {[
               { href:"/", label:"Ana Sayfa" },
               { href:"/#hakkimizda", label:"Hakkımızda" },
+              { href:"/#etkinlikler", label:"Etkinlikler" },
               { href:"/ilanlar", label:"Satın Alım İlanları" },
               { href:"/#iletisim", label:"İletişim" },
             ].map(l => (

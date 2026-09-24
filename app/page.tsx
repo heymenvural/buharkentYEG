@@ -17,7 +17,7 @@ export default function Home() {
       <Hakkimizda />
       <Bolge />
       <Faaliyetler />
-      <IlanCagri />
+      <Etkinlikler />
       <Iletisim />
     </main>
   );
@@ -52,7 +52,7 @@ function Hero() {
         </div>
         <div className="hero-btns" style={{ animation:"fadeUp .9s ease .65s both", display:"flex", gap:16, justifyContent:"center", flexWrap:"wrap" }}>
           <a href="#hakkimizda" className="btn-green">Hakkımızda →</a>
-          <a href="/ilanlar" className="btn-primary" style={{ background:"rgba(255,255,255,.1)", border:"1px solid rgba(255,255,255,.3)" }}>📢 Satın Alım İlanları</a>
+          <a href="#etkinlikler" className="btn-primary" style={{ background:"rgba(255,255,255,.1)", border:"1px solid rgba(255,255,255,.3)" }}>🎉 Etkinliklerimiz</a>
         </div>
       </div>
 
@@ -166,18 +166,63 @@ function Faaliyetler() {
   );
 }
 
-function IlanCagri() {
+type Etkinlik = {
+  baslik: string;
+  tarih: string;
+  yer: string;
+  aciklama: string;
+  ikon: string;
+  durum: "Devam Ediyor" | "Yakında" | "Tamamlandı";
+};
+
+// Yeni etkinlik eklemek için bu listeye bir öğe eklemen yeterli.
+const etkinlikler: Etkinlik[] = [
+  {
+    baslik: "YEGFEST – Yerel Ürün Tanıtımı",
+    tarih: "7–9 Eylül 2026",
+    yer: "Ankara",
+    aciklama: "Tarım ve Orman Bakanlığı iş birliğiyle 155 ilçenin yerel ürünlerinin tanıtıldığı etkinlikte Buharkentli üreticilerin incir cipsi, kuru incir gibi markalı ürünlerini sergiledik.",
+    ikon: "🧺",
+    durum: "Tamamlandı",
+  },
+  {
+    baslik: "Kültürler Buluşuyor",
+    tarih: "",
+    yer: "Buharkent Taze İncir Festivali",
+    aciklama: "AIESEC iş birliğiyle uluslararası gençleri Buharkent'te ağırlayarak yerel kültürümüzü ve festivalimizi tanıttık.",
+    ikon: "🌍",
+    durum: "Tamamlandı",
+  },
+];
+
+const durumRenk: Record<Etkinlik["durum"], { bg: string; fg: string }> = {
+  "Devam Ediyor": { bg: "#dcfce7", fg: "#166534" },
+  "Yakında":      { bg: "#dbeafe", fg: "#1e40af" },
+  "Tamamlandı":   { bg: "#f0ece4", fg: "#6b6358" },
+};
+
+function Etkinlikler() {
   return (
-    <section className="section-pad" style={{ padding:"80px 24px", background:"linear-gradient(135deg,#f0f7e6,#e8f4d9)", borderTop:"1px solid #d4edba" }}>
-      <div style={{ maxWidth:800, margin:"0 auto", textAlign:"center" }}>
-        <div className="reveal">
-          <div style={{ display:"inline-block", background:"#5A9E1A", color:"white", borderRadius:20, padding:"6px 18px", fontSize:12, letterSpacing:2, textTransform:"uppercase", marginBottom:24, fontWeight:700 }}>🔔 Aktif İlan</div>
-          <h2 style={{ fontSize:"clamp(22px,4vw,36px)", fontWeight:800, color:"#1B3F7A", marginBottom:20 }}>Ofis Ekipmanı Satın Alım İlanı</h2>
-          <p style={{ fontSize:16, color:"#555", lineHeight:1.8, marginBottom:32 }}>
-            IPARD III – LEADER Programı kapsamında dernek ofisimiz için teknolojik cihazlar ve ofis mobilyaları temin edilecektir.<br />
-            <strong>İlan açılışı: 13 Nisan 2026</strong>
-          </p>
-          <a href="/ilanlar" className="btn-green" style={{ fontSize:16, padding:"16px 40px" }}>İlanları Görüntüle →</a>
+    <section id="etkinlikler" className="section-pad" style={{ padding:"100px 24px", background:"linear-gradient(135deg,#f0f7e6,#e8f4d9)", borderTop:"1px solid #d4edba" }}>
+      <div style={{ maxWidth:1100, margin:"0 auto" }}>
+        <div className="reveal" style={{ textAlign:"center", marginBottom:56 }}>
+          <div className="section-title">Etkinliklerimiz</div>
+          <p style={{ fontSize:16, color:"#666", maxWidth:600, margin:"24px auto 0" }}>Buharkent'i ve üreticilerimizi tanıtmak için yürüttüğümüz etkinlikler.</p>
+        </div>
+        <div className="grid-3" style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit, minmax(300px, 1fr))", gap:24 }}>
+          {etkinlikler.map((e,i) => (
+            <div key={i} className="card-hover reveal" style={{ background:"white", borderRadius:14, padding:"28px 24px", border:"1px solid #e8e4db", borderTop:"4px solid #5A9E1A", display:"flex", flexDirection:"column" }}>
+              <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-start", marginBottom:14 }}>
+                <div style={{ fontSize:36 }}>{e.ikon}</div>
+                <span style={{ background:durumRenk[e.durum].bg, color:durumRenk[e.durum].fg, borderRadius:20, padding:"4px 12px", fontSize:11, fontWeight:700, letterSpacing:.5 }}>{e.durum}</span>
+              </div>
+              <div style={{ fontWeight:700, fontSize:17, color:"#1B3F7A", marginBottom:10 }}>{e.baslik}</div>
+              <div style={{ fontSize:13, color:"#5A9E1A", fontWeight:600, marginBottom:12 }}>
+                📍 {e.yer}{e.tarih && <> · 📅 {e.tarih}</>}
+              </div>
+              <p style={{ fontSize:14, color:"#555", lineHeight:1.75 }}>{e.aciklama}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
